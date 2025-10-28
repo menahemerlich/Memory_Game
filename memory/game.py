@@ -16,12 +16,21 @@ def create_pairs(size:int):
         card_list.append(i + 1)
     return card_list
 
+def random_mixing(card_list: list[int]):
+    for i in range(50):
+        index1 = random.randint(0, len(card_list) - 1)
+        index2 = random.randint(0, len(card_list) - 1)
+        if index1 != index2:
+            card_list[index1], card_list[index2] = card_list[index2], card_list[index1]
+    return card_list
+
 def board_with_pairs(board: list[list[int]] ,card_list: list[int]):
     for i in range(len(board)):
         for j in range(len(board[i])):
             mix_card = card_list.pop(0)
             board[i][j] = mix_card
     return board
+
 
 
 
