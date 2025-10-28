@@ -5,8 +5,15 @@ def input_coordinates():
     coordinates = choice.split(" ")
     return coordinates
 
-def test_input(coordinates: list[str], size:int, correct_pairs:list[list[str]]):
-    if coordinates[0].isnumeric() and coordinates[-1].isnumeric() and coordinates not in correct_pairs:
+def test_correct_pairs(correct_pairs, coordinates):
+    for i in correct_pairs:
+        if coordinates == i:
+            print("You already chose it.")
+        return True
+    return False
+
+def test_input(coordinates: list[str], size:int):
+    if coordinates[0].isnumeric() and coordinates[-1].isnumeric():
         if int(coordinates[0]) < size and int(coordinates[-1]) < size and len(coordinates) == 2:
             return True
     return False
@@ -37,7 +44,8 @@ def change_board(board_1: list[list[int]], board_2: list[list[int]], coordinates
     if board_2[coordinates_1[0]][coordinates_1[1]] == board_2[coordinates_2[0]][coordinates_2[1]]:
         board_1[coordinates_1[0]][coordinates_1[1]] = board_2[coordinates_1[0]][coordinates_1[1]]
         board_1[coordinates_2[0]][coordinates_2[1]] = board_2[coordinates_2[0]][coordinates_2[1]]
-    return board_1
+        return True, board_1
+    return False, board_1
 
 def if_finished(board_1: list[list[int]]):
     for i in board_1:
