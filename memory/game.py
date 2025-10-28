@@ -17,7 +17,7 @@ def create_pairs(size:int):
     return card_list
 
 def random_mixing(card_list: list[int]):
-    for i in range(50):
+    for i in range(100):
         index1 = random.randint(0, len(card_list) - 1)
         index2 = random.randint(0, len(card_list) - 1)
         if index1 != index2:
