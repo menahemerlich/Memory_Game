@@ -1,3 +1,4 @@
+correct_pairs = []
 def input_coordinates():
     global coordinates
     choice = input("Enter your coordinates: ")
@@ -15,8 +16,11 @@ def input_conver(coordinates:list[str]):
         coordinates[i] = int(coordinates[i])
     return coordinates
 
-
-
+def correct_pairs_list(board: list[list[int]], coordinates_1:list[int], coordinates_2:list[int]):
+    global correct_pairs
+    if board[coordinates_1[0]][coordinates_1[1]] == board[coordinates_2[0]][coordinates_2[1]]:
+        correct_pairs.append(coordinates_1)
+    return correct_pairs
 
 
 

@@ -12,8 +12,8 @@ def create_board(size: int, fill:str = "x"):
 def create_pairs(size:int):
     card_list = []
     for i in range(1, ((size ** 2) // 2) + 1):
-        card_list.append(i + 10)
-        card_list.append(i + 10)
+        card_list.append(i)
+        card_list.append(i)
     return card_list
 
 def random_mixing(card_list: list[int]):
