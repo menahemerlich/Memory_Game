@@ -22,7 +22,7 @@ def correct_pairs_list(board: list[list[int]], coordinates_1:list[int], coordina
         correct_pairs.append(coordinates_1)
     return correct_pairs
 
-def change_board(board_1: list[list[int]], board_2: list[list[int]],coordinates: list[int]):
+def change_board_temporary(board_1: list[list[int]], board_2: list[list[int]],coordinates: list[int]):
     temporary = board_1[coordinates[0]][coordinates[1]]
     board_1[coordinates[0]][coordinates[1]] = board_2[coordinates[0]][coordinates[1]]
     for i in board_1:
@@ -33,6 +33,16 @@ def change_board(board_1: list[list[int]], board_2: list[list[int]],coordinates:
     board_1[coordinates[0]][coordinates[1]] = temporary
     return board_1
 
+def change_board(board_1: list[list[int]], board_2: list[list[int]], coordinates_1:list[int], coordinates_2:list[int]):
+    if board_2[coordinates_1[0]][coordinates_1[1]] == board_2[coordinates_2[0]][coordinates_2[1]]:
+        board_1[coordinates_1[0]][coordinates_1[1]] = board_2[coordinates_1[0]][coordinates_1[1]]
+        board_1[coordinates_2[0]][coordinates_2[1]] = board_2[coordinates_2[0]][coordinates_2[1]]
+    return board_1
 
+def if_finished(board_1: list[list[int]]):
+    for i in board_1:
+        if "x" in i:
+            return False
+    return True
 
 
