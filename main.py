@@ -8,7 +8,10 @@ game_board_display = create_board(size)
 card_list = random_mixing(create_pairs(size))
 game_board_indoor = board_with_pairs(create_board(size), card_list)
 
-
+for i in game_board_display:
+    for j in i:
+        print(f"{j:3}", end="  ")
+    print()
 while not if_finished(game_board_display):
     coordinates = input_coordinates()
     while not test_input(coordinates, size) and test_correct_pairs(correct_pairs, coordinates):
