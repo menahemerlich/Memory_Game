@@ -1,12 +1,13 @@
 from memory.game import create_board, create_pairs, board_with_pairs, random_mixing
-from memory.io import input_coordinates, test_input, input_conver, correct_pairs_list, change_board_temporary, change_board, if_finished, test_correct_pairs
+from memory.io import input_coordinates, test_input, input_conver, correct_pairs_list, change_board_temporary, change_board, if_finished, test_correct_pairs, clear_screen_os
 
-size = 2
+size = 4
 correct_pairs = []
 coordinates_list = []
 game_board_display = create_board(size)
 card_list = random_mixing(create_pairs(size))
 game_board_indoor = board_with_pairs(create_board(size), card_list)
+
 
 for i in game_board_display:
     for j in i:
@@ -14,7 +15,7 @@ for i in game_board_display:
     print()
 while not if_finished(game_board_display):
     coordinates = input_coordinates()
-    while not test_input(coordinates, size) and test_correct_pairs(correct_pairs, coordinates):
+    while not test_input(coordinates, size) and not test_correct_pairs(correct_pairs, coordinates):
         coordinates = input_coordinates()
     coordinates = input_conver(coordinates)
     coordinates_list.append(coordinates)
@@ -25,6 +26,7 @@ while not if_finished(game_board_display):
             correct_pairs.append(coordinates_list[0])
             correct_pairs.append(coordinates_list[1])
             coordinates_list = []
+            clear_screen_os()
             for i in game_board_display:
                  for j in i:
                      print(f"{j:3}", end="  ")
@@ -32,6 +34,11 @@ while not if_finished(game_board_display):
         else:
             change_board_temporary(game_board_display, game_board_indoor, coordinates)
             coordinates_list = []
+            clear_screen_os()
+            for i in game_board_display:
+                for j in i:
+                    print(f"{j:3}", end="  ")
+                print()
 
 print("Finish!!!!!")
 for i in game_board_display:

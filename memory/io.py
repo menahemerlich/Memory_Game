@@ -1,4 +1,8 @@
 correct_pairs = []
+import os
+
+def clear_screen_os():
+    os.system('cls')
 def input_coordinates():
     global coordinates
     choice = input("Enter your coordinates: ")
