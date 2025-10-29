@@ -13,7 +13,7 @@ def test_correct_pairs(correct_pairs, coordinates):
     for i in correct_pairs:
         if coordinates == i:
             print("You already chose it.")
-        return True
+            return True
     return False
 
 def test_input(coordinates: list[str], size:int):
